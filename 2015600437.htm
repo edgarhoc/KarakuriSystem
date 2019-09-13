@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Acceder a los elementos de un objeto</p>
+
+<p id="demo"></p>
+
+<script>
+var objeto = "";
+objeto = {"boleta":"2015600437",
+  "balance":{"activo":{"bancos":1504,"insumo1":178,"insumo2":131,"en_proceso":633,"mercancias":1499,"clientes":1947,"infraestructura":13090},
+             "pasivo":{"proveedores":1829,"hipotecas":10005},
+			"capital":{"capital_social":4871,
+					"utilidades":"function(){return (objeto.balance.activo.bancos + objeto.balance.activo.insumo1 + objeto.balance.activo.insumo2 + objeto.balance.activo.en_proceso + objeto.balance.activo.mercancias + objeto.balance.activo.clientes + objeto.balance.activo.infraestructura)-(objeto.balance.pasivo.proveedores + objeto.balance.pasivo.hipotecas + objeto.balance.capital.capital_social);}"}}
+  };
+  
+objeto.balance.capital.utilidades = eval("(" + objeto.balance.capital.utilidades + ")");
+ 
+document.getElementById("demo").innerHTML = 
+"Boleta: "+ objeto.boleta + "<br><br>"
++"ACTIVOS"+"<br>"
++ "		Bancos: "+ objeto.balance.activo.bancos + "<br>"
++ "		Insumo 1: "+objeto.balance.activo.insumo1 + "<br>"
++ "		Insumo 2: "+objeto.balance.activo.insumo2 + "<br>"
++ "		En_proceso: "+objeto.balance.activo.en_proceso + "<br>"
++ "		Mercancias: "+objeto.balance.activo.mercancias + "<br>"
++ "		Clientes: "+objeto.balance.activo.clientes + "<br>"
++ "		Infraestructura: "+objeto.balance.activo.infraestructura + "<br><br>"
+
++"PASIVOS"+"<br>"
++ "		Proveedores: "+objeto.balance.pasivo.proveedores + "<br>"
++ "		Hipotecas: "+objeto.balance.pasivo.hipotecas + "<br><br>"
+
++"CAPITAL SOCIAL"+"<br>"
++ "Capital: "+objeto.balance.capital.capital_social + "<br><br>"
++ "Utilidad: "+objeto.balance.capital.utilidades() + "<br>";
+</script>
+
+</body>
+</html>

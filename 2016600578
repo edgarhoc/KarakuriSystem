@@ -1,0 +1,31 @@
+<p id="demo"></p>
+
+<script>
+var objeto = "";
+var totalu=0;
+objeto = {"boleta":"20106600578",
+  "balance":{"activo":{"bancos":700,"insumo1":63,"insumo2":46,"clientes":733,"infraestructura":5600,"proceso":288,"mercancia":546},
+             "pasivo":{"proveedores":666, "hipotecas":3270}
+            },
+                         "capitalsocial":2419
+  };
+  totalu = (objeto.balance.activo.bancos+objeto.balance.activo.insumo1 + objeto.balance.activo.insumo2 + objeto.balance.activo.clientes + objeto.balance.activo.infraestructura+ objeto.balance.activo.proceso + objeto.balance.activo.mercancia)-(objeto.balance.pasivo.proveedores+objeto.balance.pasivo.hipotecas+objeto.capitalsocial);
+  
+document.getElementById("demo").innerHTML = 
+"Boleta: "+ objeto.boleta + "<br><br>"
+
++ "Bancos: "+ objeto.balance.activo.bancos + "<br>"
++ "Insumo 1: "+objeto.balance.activo.insumo1 + "<br>"
++ "Insumo 2: "+objeto.balance.activo.insumo2 + "<br>"
++ "Clientes: "+ objeto.balance.activo.clientes + "<br>"
++ "Infraestructura: "+ objeto.balance.activo.infraestructura + "<br>"
++ "En proceso: "+ objeto.balance.activo.proceso + "<br>"
++ "Mercancia: "+ objeto.balance.activo.mercancia + "<br><br>"
++ "Proveedores: "+objeto.balance.pasivo.proveedores + "<br>"
++ "Hipotecas: "+ objeto.balance.pasivo.hipotecas + "<br><br>"
++ "Capital social: "+ objeto.capitalsocial + "<br><br><br>"
++ "Utilidades:"+ totalu + "<br>";
+</script>
+
+</body>
+</html>

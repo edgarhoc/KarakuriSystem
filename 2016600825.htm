@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
+
+<p>Acceder a los elementos de un objeto</p>
+
+<p id="demo"></p>
+
+<script>
+var objeto = "";
+var totalUtilidad = 0;
+objeto = {"boleta":"2016600825",
+  		  "balance":{"activo":{"bancos":943,"insumoA":123, "insumoB":93, "clientes": 1559, "infraestructura":9334, "proceso":609, "mercancias":1152 },
+             "pasivo":{"proveedores":1389, "hipotecas":7597 , "capitalsocial":2988},
+             "utilidades":{"utilidad":0},
+            }
+  };
+ 
+ totalUtilidad = (objeto.balance.activo.bancos + objeto.balance.activo.insumoA + objeto.balance.activo.insumoB + objeto.balance.activo.clientes + objeto.balance.activo.infraestructura + objeto.balance.activo.proceso + objeto.balance.activo.mercancias )- (objeto.balance.pasivo.proveedores + objeto.balance.pasivo.hipotecas + objeto.balance.pasivo.capitalsocial);
+document.getElementById("demo").innerHTML = 
+"boleta: "+ objeto.boleta + "<br>" 
++ "bancos: "+ objeto.balance.activo.bancos + "<br>"
++ "insumoA: "+objeto.balance.activo.insumoA + "<br>"
++ "insumoB: "+objeto.balance.activo.insumoB + "<br>"
++ "clientes: "+objeto.balance.activo.clientes + "<br>"
++ "infraestructura: "+objeto.balance.activo.infraestructura + "<br>"
++ "proceso: "+objeto.balance.activo.proceso + "<br>"
++ "mercancias: "+objeto.balance.activo.mercancias + "<br>"
++ "proveedores: "+objeto.balance.pasivo.proveedores + "<br>"
++ "hipotecas: "+objeto.balance.pasivo.hipotecas + "<br>"
++ "capital social: "+objeto.balance.pasivo.capitalsocial + "<br>"
++ "utilidad: "+totalUtilidad   + "<br>";
+</script>
+
+</body>
+</html>

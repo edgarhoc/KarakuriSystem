@@ -1,1 +1,38 @@
-select materia, industria, count()/(select count() from empresas where industria in (select distinct industria from empresas ) ) as proba from empresas where materia in (select distinct materia from empresas) group by materia, industria
+PROLOG:
+
+jproba:-write('{"jproba":'),arbol, write('}').
+ arbol:-write('{"nbarbol":"'),read(Nbarbol),write(Nbarbol),write('", "frecuencia":'),frecuencia(Nbarbol), write('}').
+ frecuencia(Nbarbol):-write('"select count(*) from '),write(Nbarbol),write(';"'),write(','),dimension(Nbarbol).
+ dimension(Nbarbol):-write('{"nbdimension":"'),read(Nbdimension),write(Nbdimension),write('",'),puerta(Nbarbol,Nbdimension).
+ puerta(Nbarbol,Nbdimension):-write('"select '),write(Nbdimension),read(Dim),write(','),write(Dim),
+ write(',count()/(select count()'),write(' from '),write(Nbarbol),write(' where '),
+ write(Dim),write(' in(select distinct '),
+ write(Dim),write(' from '),write(Nbarbol),write('))'),write('as proba from '),write(Nbarbol),write(' where '),write(Nbdimension),
+ write(' in (select distinct '),write(Nbdimension),write(' from '),write(Nbarbol),write(') group by '),write(Nbdimension),write(','),write(Dim), write(';').
+ :-jproba.
+
+CONSOLA:
+
+empresas.
+materia.
+industria.
+
+CADENA:
+
+{"jproba":{"nbarbol":"empresas", "frecuencia":"select count() from empresas;",{"nbdimension":"materia","select materia,industria,count()/(select count(*) from empresas where industria in(select distinct industria from empresas))as proba from empresas where materia in (select distinct materia from empresas) group by materia,industria;}}
+
+QUERY:
+
+select distinct materia from empresas ->empresas
+  
+select  count(*) from empresas where materia = 'ingenieria del conocimiento'-->38
+  
+select  count(*) from empresas ->111
+  
+select  count()/(select  count() from empresas ) from empresas where materia = 'ingenieria del conocimiento' ->0.3423
+  
+select   count()/(select  count() from empresas ) as proba from empresas where materia in (select distinct materia from empresas) -->1
+     
+select   count()/(select  count() from empresas ) as proba from empresas where materia in (select distinct materia from empresas) group by materia --> probabilidades de cada una
+
+select    materia, industria, count()/(select  count() from empresas where industria in (select distinct industria from empresas ) ) as proba from empresas where materia in (select distinct materia from empresas) group by materia, industria
